@@ -1,4 +1,3 @@
-from pipe import where, select
 
 
 def day_3_1(f):
