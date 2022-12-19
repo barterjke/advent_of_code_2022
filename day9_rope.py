@@ -2,25 +2,7 @@ import dataclasses
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-@dataclasses.dataclass(eq=True, frozen=True)
-class Vec2:
-    x: int
-    y: int
-
-    def normalize(self):
-        x = self.x if abs(self.x) <= 1 else self.x / abs(self.x)
-        y = self.y if abs(self.y) <= 1 else self.y / abs(self.y)
-        return Vec2(x, y)
-
-    def __mul__(self, other: int):
-        return Vec2(self.x * other, self.y * other)
-
-    def __add__(self, other: 'Vec2'):
-        return Vec2(self.x + other.x, self.y + other.y)
-
-    def __sub__(self, other: 'Vec2'):
-        return Vec2(self.x - other.x, self.y - other.y)
+from util import Vec2
 
 
 def first(content: str) -> int:
@@ -66,6 +48,7 @@ def second(content: str) -> int:
                     rest[i] += dif.normalize()
                 if i == 8:
                     grid.add(rest[i])
+    draw_grid(grid)
     return len(grid)
 
 
